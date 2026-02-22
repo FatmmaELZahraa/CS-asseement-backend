@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { ConfigService } from '@nestjs/config';
-import OpenAI from 'openai';
+// import OpenAI from 'openai';
 
 
 @Injectable()

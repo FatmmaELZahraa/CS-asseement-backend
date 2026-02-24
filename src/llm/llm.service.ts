@@ -12,7 +12,7 @@ export class LlmService {
 
   constructor(private configService: ConfigService) {
     const apiKey = this.configService.get<string>('GEMINI_API_KEY');
-    this.genAI = new GoogleGenerativeAI(apiKey || "AIzaSyC3v15DFZG6CbSVTAiXhsZd7EcgOcAhLTU");
+    this.genAI = new GoogleGenerativeAI(apiKey || "AIzaSyC6i2HRXqwBpj8MFCFdaaZDcsVW9EDo4sE");
 
     this.model = this.genAI.getGenerativeModel({ 
       model: 'gemini-2.5-flash',

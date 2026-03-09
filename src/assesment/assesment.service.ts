@@ -39,9 +39,7 @@ export class AssessmentService {
     };
   }
 
-  // ------------------------
-  // Evaluate Full Assessment
-  // ------------------------
+ 
  async evaluateFullAssessment(submissionData: {
   originalAssessment: any;
   userAnswers: { mcqs: any[]; openEnded: any[]; coding: any[] };

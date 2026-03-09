@@ -11,7 +11,7 @@ export class LlmService {
 
 
   constructor(private configService: ConfigService) {
-    const apiKey = this.configService.get<string>('GEMINI_API_KEY');
+    const apiKey = process.env.GOOGLE_API_KEY || this.configService.get<string>('GOOGLE_API_KEY');
     this.genAI = new GoogleGenerativeAI(apiKey || "AIzaSyAlXjkHwNguPo8o4kkvai0oZsV4sF2NA30");
 
     this.model = this.genAI.getGenerativeModel({ 
@@ -90,7 +90,7 @@ Do not include markdown or any text outside JSON.
 
   const result = await this.generateContent(prompt);
 
-  // Ensure coding is always an array
+  
   if (result?.coding && !Array.isArray(result.coding)) {
     result.coding = [result.coding];
   }

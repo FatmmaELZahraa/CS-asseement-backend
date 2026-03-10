@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { ConfigService } from '@nestjs/config';
 // import OpenAI from 'openai';
+import axios from 'axios';
 
 
 @Injectable()
@@ -11,8 +12,8 @@ export class LlmService {
 
 
   constructor(private configService: ConfigService) {
-    const apiKey = process.env.GOOGLE_API_KEY || this.configService.get<string>('GOOGLE_API_KEY');
-    this.genAI = new GoogleGenerativeAI(apiKey || '');
+    const apiKey = process.env.GEMINI_API_KEY || this.configService.get<string>('GEMINI_API_KEY');
+    this.genAI = new GoogleGenerativeAI(apiKey || "AIzaSyDgSOhAvlHn_0erI_e9qq76aPzU2Lifr1Q");
 
     this.model = this.genAI.getGenerativeModel({ 
       model: 'gemini-2.5-flash',
@@ -90,7 +91,7 @@ Do not include markdown or any text outside JSON.
 
   const result = await this.generateContent(prompt);
 
-  
+  // Ensure coding is always an array
   if (result?.coding && !Array.isArray(result.coding)) {
     result.coding = [result.coding];
   }
@@ -180,6 +181,67 @@ private evaluateMCQs(userAnswers: any[], referenceMcqs: any[]) {
   });
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // --- Evaluate coding answers ---
+  // async evaluateCoding(userCode: string, testCases: any[]) {
+  //   let passed = 0;
+
+  //   for (const test of testCases) {
+  //     try {
+  //       const fullCode = `
+  //         ${userCode}
+  //         return solution(${test.input});
+  //       `;
+  //       const result = new Function(fullCode)();
+  //       if (JSON.stringify(result) === JSON.stringify(test.expectedOutput)) {
+  //         passed++;
+  //       }
+  //     } catch (e) {}
+  //   }
+
+  //   const score = (passed / testCases.length) * 100;
+
+  //   return { passed, total: testCases.length, score };
+  // }
+// Inside LlmService
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

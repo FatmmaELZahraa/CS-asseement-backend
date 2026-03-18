@@ -19,7 +19,7 @@ export const executeCode = async (sourceCode: string, languageId: number, stdin:
     params: { base64_encoded: 'true', fields: '*' },
     headers: {
       'content-type': 'application/json',
-      'x-rapidapi-key': 'cb3a33c8ebmshcee9b05ec4a9649p1958c3jsn88af6961de32',
+      'x-rapidapi-key': '66b3aa8ca5msh95e59bedc0af67ap1a1581jsnc36a09228512',
       'x-rapidapi-host': 'judge029.p.rapidapi.com'
     },
     data: {

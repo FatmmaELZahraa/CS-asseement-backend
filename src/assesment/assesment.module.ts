@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AssessmentService } from './assesment.service';
 import { AssessmentController } from './assesment.controller';
-import { SkillsModule } from '../skills/skills.module'; // 👈 استيراد مديول المهارات
-import { LlmModule } from '../llm/llm.module';       // 👈 استيراد مديول الـ LLM
+import { SkillsModule } from '../skills/skills.module'; 
+import { LlmModule } from '../llm/llm.module';       
 
 @Module({
   imports: [
-    SkillsModule, // يوفر TracksService
-    LlmModule     // يوفر LlmService
+    SkillsModule, 
+    LlmModule   
   ],
   controllers: [AssessmentController],
   providers: [AssessmentService],
